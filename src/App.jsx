@@ -160,12 +160,16 @@ class ShoppingCart {
 
 const mosCornerCart = [];
 
-function addToCart(shopCart, item){
+function addToCart(shopCart, ...item){
+  shopCart = [...shopCart, ...item] 
   shopCart.push(item);
 }
 
 
-addToCart(mosCornerCart, redBull,cookies, bread, cake, milk);
+addToCart(mosCornerCart, redBull);
+addToCart(mosCornerCart, cake);
+addToCart(mosCornerCart, bread);
+
 console.warn("new cart has", mosCornerCart)
 
 console.log(mosCornerCart)
