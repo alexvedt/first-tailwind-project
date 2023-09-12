@@ -74,22 +74,6 @@ console.log(introSecondStudent)
 
 
 
-/**
- * this is the App component which is used to display the app
- * @returns {JSX.Element} this is the app component
- */
-function App () {
-  return(
-    <>
-    <Header />
-    </>
-  )
-}
-
-export default App
-
-
-
 class User {
   language = "English";
   constructor(firstName, lastName) {
@@ -151,10 +135,8 @@ class ShoppingCart {
   console.warn("our shopw is", mosCorner);
 
   const redBull = { id: 1, title: "Red Bull", price: 25.0 };
-  const cookies = { id: 2, title: "Coockies", price: 20.0 };
   const bread = { id: 3, title: "bread", price: 50.0 };
   const cake = { id: 4, title: "Ccake", price: 200.0 };
-  const milk = { id: 5, title: "milk", price: 10.0 };
 
 
 
@@ -176,3 +158,61 @@ console.log(mosCornerCart)
 
 const JuliasBakery = [...mosCornerCart, redBull]
 console.log("julias bakery", JuliasBakery)
+
+
+/**
+ * we are going to make an array of numbers
+ */
+ const values = [100, 200, 300, 400, 500];
+/**
+ * here we are going to use the map function to add 1 to each element in the array
+ */
+ const newArray = values.map(function (element, index, array) {
+   console.log(element, index, array);
+   return element + 1;
+  });
+  console.log("newarray>>", newArray);
+
+
+  const names = [
+    { firstName: "Monde", lastName: "Sineke", isStudent: false },
+    { firstName: "Alexander", lastName: "Bjerketvedt", isStudent : true },
+    { firstName: "Ali", lastName: "Baba", isStudent: true},
+    { firstName: "Sander", lastName: "Nordlending", isStudent: true },
+  ];
+
+  const combinedNames = names.map ((person) => {
+    return {
+      ...person,
+     fullName: `${person.firstName} ${person.lastName}`};
+  });
+  console.log(combinedNames)
+
+  const students = names.filter((person) => person.isStudent);
+console.log("students", students);
+
+
+
+/**
+ * this is the App component which is used to display the app
+ * @returns {JSX.Element} this is the app component
+ */
+ function App () {
+  return(
+    <>
+    <Header />
+    <main>
+      <h1>This is my array!</h1>
+      <ul>
+          {combinedNames.map((person, index) => (
+            <li key={index}>{person.fullName}</li>
+          ))}
+        </ul>
+    </main>
+    </>
+  )
+}
+
+export default App
+
+
