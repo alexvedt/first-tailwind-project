@@ -1,5 +1,8 @@
 import './App.css'
 import Header from "./components/header"
+import { faker } from '@faker-js/faker';
+const randomName = faker.person.fullName(); 
+console.log(randomName); 
 
 
 
@@ -190,6 +193,102 @@ console.log("julias bakery", JuliasBakery)
 
   const students = names.filter((person) => person.isStudent);
 console.log("students", students);
+
+
+
+
+
+const recipes = [
+  { title: "Shish", isHealthy: false, difficulty: 8, price: 250 },
+  { title: "Mousakka", isHealthy: true, difficulty: 9, price: 300 },
+  { title: "Chicken", isHealthy: false, difficulty: 7, price : 200 },
+  { title: "Fried Rice", isHealthy: true, difficulty: 6, price : 150 },
+  { title: "Pancakes", isHealthy: false, difficulty: 5, price : 100 },
+  { title: "Pizza", isHealthy: false, difficulty: 4, price : 180 },
+  { title: "Salad", isHealthy: true, difficulty: 3, price : 120 },
+  { title: "Burger", isHealthy: false, difficulty: 7, price : 300 },
+  { title: "Pasta", isHealthy: true, difficulty: 5, price : 250 },
+];
+
+const filteredRecipes = recipes.filter(
+  (recipes) => recipes.isHealthy && recipes.difficulty >=7
+);
+console.log("filteredRecipes", filteredRecipes);
+
+/**
+ * we are going to use the reduce function to calculate the total cost of all the recipes
+ */
+const costs = recipes.reduce((total, recipe) => {
+  total += recipe.price;
+  return total; 
+},0); 
+console.log("costs", costs);
+
+
+
+/**
+ * shopping cart where 
+ */
+const products = [
+  { title: "Bread", inStock: true , quantity: 5 , discount: 2 , price: 25.0 },
+  { title: "Milk" , inStock: true , quantity: 5 , discount: 2 , price: 20.0 },
+  { title: "Eggs" , inStock: true , quantity: 5 , discount: 2 , price: 10.0 },
+  { title: "Cheese" , inStock: true , quantity: 5 , discount: 2 , price: 40.0 },
+  { title: "Yoghurt" , inStock: true , quantity: 5 , discount: 2 , price: 30.0 },
+  { title: "Butter" , inStock: true , quantity: 5 , discount: 2 , price: 35.0 },
+  { title: "Coke" , inStock: true , quantity: 5 , discount: 2 , price: 15.0 },
+  { title: "Soap" , inStock: true , quantity: 5 , discount: 2 , price: 15.0 },
+  { title: "Chips" , inStock: false , quantity: 5 , discount: 2 , price: 15.0 },
+];
+
+const fixedProducts = products.map((element) => {
+  return {
+    discount: 0,
+    ...element,
+  };
+});
+console.log('fixedProducts >>>', fixedProducts);
+
+const totalCost = products.reduce(
+  (total, currentProduct) => (total += currentProduct.price),
+  0
+);
+console.log('Total Cost:', totalCost);
+
+const totalCostWithDiscount = products.reduce((total, { discount = 0, price, inStock = false, quantity }) => {
+    if (!inStock){
+    return total;
+    }
+    if (!quantity || quantity === 0) { 
+      return total;
+    }
+      total += (price - discount) * quantity;
+      return total;
+
+    },
+  0
+);
+
+
+console.log('Total Cost:', totalCost);
+console.log('Total Cost with discount:', totalCostWithDiscount);
+console.log('You saved in total', totalCost - totalCostWithDiscount);
+
+
+
+
+
+/*
+*this is not in use......
+
+const discountPercentage = 10; 
+const discountAmount = totalCost * (discountPercentage / 100); 
+const finalCost = totalCost - discountAmount;
+console.log("finalCost after discount>>>>>>", finalCost);
+*/
+
+
+
 
 
 
