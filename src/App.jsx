@@ -241,6 +241,20 @@ const products = [
   { title: "Chips" , inStock: false , quantity: 5 , discount: 2 , price: 15.0 },
 ];
 
+
+
+const searchTerm = "Coke";
+const foundProduct = products.find((product) => {
+  if (product.title === searchTerm.toLowerCase()) {
+    return true;
+  } else
+  console.log(`Product with title "${searchTerm}" not found.`);
+}); 
+
+console.log("foundProduct", foundProduct);
+
+
+
 const fixedProducts = products.map((element) => {
   return {
     discount: 0,
