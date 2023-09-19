@@ -246,3 +246,35 @@ console.log("passedstudents>>>>", passedStudents)
 
 const failedStudents = fedStudents.filter (student => student.score < 10);
 console.log("This student failed AS FUCK", failedStudents)
+
+
+const mixedArray = [10, null, "hello", undefined, 42, null, "world"];
+
+const filterArray = mixedArray.filter(value => (!value != null));
+console.log("did we remove shit",filterArray)
+
+const products = [
+    {
+        name: "laptop", price: 1000, inStock: true
+    },
+    {
+        name: "mouse", price: 50, inStock: true
+    },
+    {
+        name: "screen", price: 500, inStock: false
+    },
+    {
+        name: "chair", price: 2, inStock: true
+    },
+];
+
+const isProductInStock = products.filter(({ inStock, price }) => inStock && price < 200);
+
+console.log("isProductInStock????", isProductInStock)
+
+const arrays =  [[1,2,3], [4,5], [6,7,8,9]]
+
+const fullArray = arrays.reduce((acc, currentArray) => {
+    return acc.concat(currentArray)
+},[])
+console.log(fullArray)
