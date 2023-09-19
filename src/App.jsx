@@ -3,6 +3,7 @@ import Header from "./components/header"
 import { faker } from '@faker-js/faker';
 const randomName = faker.person.fullName(); 
 console.log(randomName); 
+import PeopleList from "./components/form/peopleList"
 
 
 
@@ -305,7 +306,6 @@ console.log("finalCost after discount>>>>>>", finalCost);
 
 
 
-
 /**
  * this is the App component which is used to display the app
  * @returns {JSX.Element} this is the app component
@@ -316,12 +316,16 @@ console.log("finalCost after discount>>>>>>", finalCost);
     <Header />
     <main>
       <h1>This is my array!</h1>
-      <ul>
+      <PeopleList />
+
+    </main>
+    <section className='section'>
+    <ul>
           {combinedNames.map((person, index) => (
             <li key={index}>{person.fullName}</li>
           ))}
         </ul>
-    </main>
+        </section>
     </>
   )
 }
