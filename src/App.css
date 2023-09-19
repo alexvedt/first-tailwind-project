@@ -4,6 +4,13 @@
   padding: 2rem;
   text-align: center;
 }
+main{
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+}
 
 .logo {
   height: 6em;
