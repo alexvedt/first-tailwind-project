@@ -278,3 +278,6 @@ const fullArray = arrays.reduce((acc, currentArray) => {
     return acc.concat(currentArray)
 },[])
 console.log(fullArray)
+
+
+console.log("ok")
